@@ -1,9 +1,9 @@
 class Person{
-    name: string
-    age: number
-    constructor(name: string, age: number) {
-        this.name = name
-        this.age = age
+    name: string | undefined
+    age: number | string | undefined
+    constructor(name?: string | undefined, age?: number | undefined) {
+        this.name = name || 'unknown'
+        this.age = age || 'unknown'
     }
 
     saludar(): void {
@@ -11,5 +11,7 @@ class Person{
     }
 }
 
-const daniel = new Person('Daniel', 29)
+const daniel = new Person()
 daniel.saludar()
+
+console.log(typeof(Person))
