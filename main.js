@@ -33,3 +33,19 @@ Student.prototype.aprobarCurso = function (curso) {
 natalida.aprobarCurso('javascript')
 
 console.log(natalida)
+
+// Prototypes con Class Syntax
+class Student2 {
+    constructor(name, age, cursosAprovados) {
+        this.name = name
+        this.age = age
+        this.cursosAprovados = cursosAprovados || []
+    }
+
+    aprobarCurso(newCourse) {
+        this.cursosAprovados.push(newCourse)
+    }
+}
+
+const carlos = new Student2('carlos', 24, ['programacion orientada a objetos', 'css y flexbox'])
+
