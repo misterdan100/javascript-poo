@@ -1,5 +1,28 @@
+type StudentParams = {
+    name: string,
+    username?: undefined | string
+    points: number
+}
+
+type SocialMediaParams = {
+    facebook: string | undefined
+    instagram: string | undefined
+    twitter: string | undefined
+}
+
+
 class Student {
-    constructor({ name, username = undefined, points }) {
+    // types
+    name: string
+    username: string | undefined
+    points: number
+    socialMedia: object
+    approvedCourses: string[]
+    learningPaths: object[]
+    withJob: boolean
+
+
+    constructor({ name, username = undefined, points }: StudentParams) {
         this.name = name
         this.username = username
         this.points = points
@@ -9,7 +32,7 @@ class Student {
         this.withJob = false
     }
 
-    addSocialMedia({ facebook, instagram, twitter }) {
+    addSocialMedia({ facebook, instagram, twitter }: SocialMediaParams) {
         this.socialMedia = {
             ...this.socialMedia,
             facebook,
@@ -18,19 +41,19 @@ class Student {
         }
     }
 
-    addApprovedCourses(cursos) {
+    addApprovedCourses(cursos: string[]): void {
         this.approvedCourses = [...this.approvedCourses, ...cursos]
     }
 
-    addLearningPath(newPath) {
+    addLearningPath(newPath: object[]): void {
         this.learningPaths = [...this.learningPaths, ...newPath]
     }
 
-    changeJob(state) {
+    changeJob(state: boolean): void {
         this.withJob = state
     }
 
-    getCourses () {
+    getCourses (): string[] {
         return this.approvedCourses
     }
 
@@ -38,7 +61,7 @@ class Student {
 
 }
 
-const daniel = new Student({
+const daniel1 = new Student({
     name: 'Daniel',
     username: 'misterdan',
     points: 100,
@@ -47,12 +70,16 @@ const daniel = new Student({
 
 // define LearningPath Class
 class LearningPath {
-    constructor(name) {
+    // types
+    name: string
+    courses: string[]
+
+    constructor(name: string) {
         this.name = name,
             this.courses = []
     }
 
-    addCourses(course) {
+    addCourses(course: string[]): void {
         this.courses = [...this.courses, ...course]
     }
 }
@@ -69,22 +96,21 @@ videoGamesPath.addCourses(['Curso Introduccion Produccion Video Juegos', 'Curso 
 
 // Create daniel object
 
-daniel.addSocialMedia({
+daniel1.addSocialMedia({
     facebook: undefined,
     instagram: 'misterdan',
     twitter: 'misterdan100',
 })
 
-daniel.addApprovedCourses(['Curso HTML y CSS', 'Curso Unreal Engine'])
-daniel.addLearningPath([developmentSchoolPath, videoGamesPath])
+daniel1.addApprovedCourses(['Curso HTML y CSS', 'Curso Unreal Engine'])
+daniel1.addLearningPath([developmentSchoolPath, videoGamesPath])
 
 const miguel = new Student({
     name: 'miguel',
-
     points: 100,
 })
 
-daniel.addSocialMedia({
+daniel1.addSocialMedia({
     facebook: undefined,
     instagram: 'miguelito',
     twitter: 'miguelito100',
@@ -99,4 +125,4 @@ miguel.changeJob(true)
 
 console.log(daniel)
 console.log(miguel)
-console.log(daniel.getCourses())
+console.log(daniel1.getCourses())
