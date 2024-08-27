@@ -1,6 +1,7 @@
+// create Student class
 class Student {
     constructor({ name, username = undefined, points }) {
-        this.name = name
+        this._name = name
         this.username = username
         this.points = points
         this.socialMedia = {}
@@ -30,14 +31,28 @@ class Student {
         this.withJob = state
     }
 
-    getCourses () {
+    get courses () {
         return this.approvedCourses
+    }
+
+    get name() {
+        return this._name
+    }
+
+    set name(newName) {
+        if(newName.length <= 3 || newName.trim() === '') {
+            console.error('new name is unavailable')
+        } else {
+            this._name = newName
+            return this._name
+        }
     }
 
 
 
 }
 
+// Create daniel object from Student class
 const daniel = new Student({
     name: 'Daniel',
     username: 'misterdan',
@@ -49,7 +64,7 @@ const daniel = new Student({
 class LearningPath {
     constructor(name) {
         this.name = name,
-            this.courses = []
+        this.courses = []
     }
 
     addCourses(course) {
@@ -58,17 +73,16 @@ class LearningPath {
 }
 
 
-// create learning paths
+// create learning paths from LearningPath class
 const developmentSchoolPath = new LearningPath('Escuela de Desarrollo Web')
 const videoGamesPath = new LearningPath('Escuela de Video Juegos')
 
+// using methods from LearningPath class
 developmentSchoolPath.addCourses(['Curso HTML y CSS','Curso de React','Curso de Responsive Design'])
-
 videoGamesPath.addCourses(['Curso Introduccion Produccion Video Juegos', 'Curso Unreal Engine', 'Curso de V-Ray'])
 
 
-// Create daniel object
-
+// using methods from Student class on daniel object
 daniel.addSocialMedia({
     facebook: undefined,
     instagram: 'misterdan',
@@ -78,13 +92,14 @@ daniel.addSocialMedia({
 daniel.addApprovedCourses(['Curso HTML y CSS', 'Curso Unreal Engine'])
 daniel.addLearningPath([developmentSchoolPath, videoGamesPath])
 
+// Create miguel object from Student class
 const miguel = new Student({
     name: 'miguel',
-
     points: 100,
 })
 
-daniel.addSocialMedia({
+// using methods from Student class on daniel object
+miguel.addSocialMedia({
     facebook: undefined,
     instagram: 'miguelito',
     twitter: 'miguelito100',
@@ -93,10 +108,14 @@ daniel.addSocialMedia({
 miguel.addApprovedCourses(['Curso HTML y CSS', 'Curso de Responsive Design'])
 miguel.addLearningPath([videoGamesPath])
 
-
 miguel.changeJob(true)
 
 
-console.log(daniel)
-console.log(miguel)
-console.log(daniel.getCourses())
+// console.log(daniel)
+// console.log(miguel)
+// console.log(daniel.getCourses())
+
+const changeName = daniel.name = 'danny'
+
+
+console.log(changeName)
