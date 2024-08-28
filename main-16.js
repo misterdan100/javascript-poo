@@ -17,8 +17,6 @@ class Comment {
     }
 }
 
-
-
 function videoPlay(id) {
     const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
     console.log("Se está reproduciendo desde la url " + urlSecreta);
@@ -211,3 +209,5 @@ const freddy = new TeacherStudent({
     email: 'f@gep.com',
     instagram: 'freddiert',
 })
+
+// TODO: CREAR NUEVAMENTE TODOS LOS OBJETOS PLATZI CON CLASES Y CON PROTOTIPOS
