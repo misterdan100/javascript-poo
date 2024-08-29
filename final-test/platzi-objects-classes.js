@@ -4,9 +4,9 @@ class Student {
         name,
         username,
         email,
-        instagram = '',
-        twitter = '',
-        facebook = '',
+        instagram = undefined,
+        twitter = undefined,
+        facebook = undefined,
     }) {
         this.name = name
         this.username = username
